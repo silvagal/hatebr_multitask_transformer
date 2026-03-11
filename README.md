@@ -22,7 +22,7 @@ The main idea is to replace independent pipelines with a unified architecture, i
 
 The experimental pipeline:
 
-- Loads and normalizes HateBR from Hugging Face (dataset ID configurable; default in code points to the public HateBR dataset)
+- Loads and normalizes HateBR from Hugging Face (dataset ID configurable via `--dataset_name` or `HATEBR_DATASET_ID`)
 - Tokenizes text with **BERTimbau Base** (`neuralmind/bert-base-portuguese-cased`)
 - Trains:
   - three single-task baselines (binary, level, target)
@@ -53,11 +53,12 @@ pip install -r requirements.txt
 From the repository root:
 
 ```bash
-python -m src.run_experiments --seeds 88,89 --use_fp16
+python -m src.run_experiments --dataset_name <hf_dataset_id> --seeds 88,89 --use_fp16
 ```
 
 ### Useful optional arguments
 
+- `--dataset_name <hf_dataset_id>`
 - `--epochs 20`
 - `--batch_size 16`
 - `--lr 2e-5`

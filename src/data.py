@@ -1448,9 +1448,15 @@ def _load_dataset_from_repo_files(
     raise RuntimeError("Failed to load HateBR from repo files.")
 
 
-def load_hatebr_dataset(mask_urls_users: bool, model_name: str) -> DatasetBundle:
+def load_hatebr_dataset(mask_urls_users: bool, model_name: str, dataset_name: str | None = None) -> DatasetBundle:
     _ensure_supported_datasets_version()
-    dataset_name = "ruanchaves/hatebr"
+    dataset_name = dataset_name or os.getenv("HATEBR_DATASET_ID", "")
+    dataset_name = dataset_name.strip()
+    if not dataset_name:
+        raise ValueError(
+            "Dataset ID is required. Pass --dataset_name or set HATEBR_DATASET_ID "
+            "with your Hugging Face dataset identifier."
+        )
     cache_dir: str | None = None
     force_download = False
     dataset = None
