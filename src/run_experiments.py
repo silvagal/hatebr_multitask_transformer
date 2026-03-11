@@ -106,6 +106,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--w_level", type=float, default=1.0)
     parser.add_argument("--w_target", type=float, default=1.0)
     parser.add_argument("--model_name", type=str, default="neuralmind/bert-base-portuguese-cased")
+    parser.add_argument("--dataset_name", type=str, default="")
     parser.add_argument("--target_threshold", type=float, default=0.5)
     return parser.parse_args()
 
@@ -471,7 +472,7 @@ def main() -> None:
     os.makedirs(output_root, exist_ok=True)
 
     print_header("Dataset")
-    dataset_bundle = load_hatebr_dataset(args.mask_urls_users, args.model_name)
+    dataset_bundle = load_hatebr_dataset(args.mask_urls_users, args.model_name, args.dataset_name)
     results_by_seed: Dict[int, Dict] = {}
     for seed in seeds:
         set_seed(seed)
