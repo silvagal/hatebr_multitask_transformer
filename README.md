@@ -22,7 +22,7 @@ The main idea is to replace independent pipelines with a unified architecture, i
 
 The experimental pipeline:
 
-- Loads and normalizes HateBR from Hugging Face (`ruanchaves/hatebr`)
+- Loads and normalizes HateBR from Hugging Face (dataset ID configurable; default in code points to the public HateBR dataset)
 - Tokenizes text with **BERTimbau Base** (`neuralmind/bert-base-portuguese-cased`)
 - Trains:
   - three single-task baselines (binary, level, target)
@@ -102,7 +102,7 @@ In short: MTL improves the primary moderation signal and enforces hierarchical c
 
 ## 6) Where results are saved
 
-All artifacts are saved under `results/`.
+All artifacts are saved under `<project_root>/results/`.
 
 Typical structure:
 
@@ -135,7 +135,7 @@ results/
           target_f1_bar.png
 ```
 
-The script also creates local Hugging Face cache directories in `.hf_cache/` and temporary files in `results/tmp/`.
+The script also creates local Hugging Face cache directories in `<project_root>/.hf_cache/` and temporary files in `<project_root>/results/tmp/`.
 
 ---
 
