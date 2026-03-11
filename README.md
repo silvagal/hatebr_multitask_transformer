@@ -142,7 +142,7 @@ The script also creates local Hugging Face cache directories in `<project_root>/
 
 ## 7) Submission information
 
-This work was **submitted to PROPOR**.
+This work was **submitted to The 17th International Conference on Computational Processing of Portuguese**.
 
 **Article title:** *A Multitask Transformer for Offensive Language Detection and Target Identification in HateBR*.
 
